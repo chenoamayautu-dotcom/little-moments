@@ -1,4 +1,4 @@
-# 拾光日记 Little Moments
+# 康康 Little Moments
 
 双人治愈风私人日记网站：Vue 3 + Vite + Supabase + GitHub Pages。
 

@@ -38,8 +38,8 @@ const formatDate=(s)=>new Date(s).toLocaleDateString('zh-CN',{month:'short',day:
 </script>
 <template>
 <div class="shell">
-<header class="top"><div class="brand"><span class="brand-mark">✿</span><div><strong>拾光日记</strong><small>Little Moments</small></div></div><div class="top-right"><span class="top-date">{{today}}</span><button v-if="session" class="icon-btn" title="退出登录" @click="logout"><LogOut :size="18"/></button></div></header>
-<main v-if="!configured" class="center"><div class="flower">🌷</div><h1>欢迎来到拾光日记</h1><p>项目已经准备好。请先按照 README 配置 Supabase 环境变量。</p></main>
+<header class="top"><div class="brand"><span class="brand-mark">✿</span><div><strong>康康</strong><small>Little Moments</small></div></div><div class="top-right"><span class="top-date">{{today}}</span><button v-if="session" class="icon-btn" title="退出登录" @click="logout"><LogOut :size="18"/></button></div></header>
+<main v-if="!configured" class="center"><div class="flower">🌷</div><h1>欢迎来到康康</h1><p>项目已经准备好。请先按照 README 配置 Supabase 环境变量。</p></main>
 <main v-else-if="!session" class="center auth"><div class="flower">🌼</div><h1>把平凡的日子，慢慢收藏起来。</h1><p>一方小天地，两个人的温柔回忆。</p><form @submit.prevent="auth"><label>邮箱<input type="email" v-model="email" autocomplete="email" required placeholder="你的邮箱"/></label><label>密码<input type="password" v-model="password" minlength="6" required placeholder="至少 6 位"/></label><button class="primary" :disabled="busy">{{busy?'请稍候…':authMode==='login'?'登录我的小天地':'创建账号'}}</button></form><button class="link" @click="authMode=authMode==='login'?'signup':'login'">{{authMode==='login'?'还没有账号？注册':'已有账号？返回登录'}}</button><p class="tiny">日记仅本人可见，共享内容仅连接的两位好友可见。</p></main>
 <main v-else class="layout"><aside class="sidebar"><div class="side-title">我的小天地</div><button v-for="t in tabs" :key="t.id" :class="['nav-item',{active:tab===t.id}]" @click="tab=t.id;refresh()"><component :is="t.icon" :size="19"/>{{t.label}}</button><div class="side-note">“每一个普通的日子，都值得被珍藏。”</div></aside><section class="content">
 <div v-if="notice" class="notice" role="status">{{notice}} <button @click="notice=''">×</button></div>
